@@ -9,6 +9,7 @@ namespace NodeGraph
 
 	struct Edge
 	{
+
 		Node* target;
 		float cost;
 	};
@@ -18,6 +19,8 @@ namespace NodeGraph
 		MathLibrary::Vector2 position;
 
 		float gScore;
+		float fScore;
+		float hScore;
 		Node* previous;
 
 		std::vector<Edge> connections;
@@ -52,5 +55,8 @@ namespace NodeGraph
 	/// <param name="node">The node to start</param>
 	/// <param name="drawnList">Nodes that have already been drawn</param>
 	void drawConnectedNodes(Node* node, std::deque<Node*>* drawnList = nullptr);
-};
 
+	bool bubbleSort(std::deque<Node*> list, Node* lookingFor);
+
+	float updateScore(Node* currentNode, Node* end);
+};
